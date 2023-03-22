@@ -7,8 +7,10 @@ export async function handler(
     res: NextApiResponse<Stay[]>
 ) {
     if (req.method === 'GET') {
+
+        const filterBy: any = req.query
         try {
-            const stays = await getStays()
+            const stays = await getStays(filterBy)
             return res.status(200).json(stays)
         } catch (err) {
             return res.status(500)

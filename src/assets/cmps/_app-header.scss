@@ -1,7 +1,7 @@
 .app-header {
     box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
     margin-bottom: 20px;
-    padding: 10px 0;
+    padding: 15px 0;
     position: sticky;
     top: 0;
     background-color: #fff;
@@ -38,6 +38,7 @@
             transition: box-shadow 0.2s ease;
             cursor: pointer;
             padding: 8px 16px;
+            font-size: 13px;
 
             &:hover {
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
@@ -91,6 +92,63 @@
             }
         }
 
+        .user-section {
+            justify-self: flex-end;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+
+            .airbnb-cta {
+                background: transparent;
+                border: 0;
+                cursor: pointer;
+                margin: 0;
+                text-align: inherit;
+                padding: 12px;
+                border-radius: 22px;
+                font-family: 'Cereal-Med';
+
+                &:hover {
+                    background: #f7f7f7;
+                }
+            }
+
+            .language {
+                margin-right: 5px;
+                padding: 12px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                font-size: 1.2rem;
+
+                &:hover {
+                    background: #f7f7f7;
+                }
+            }
+
+            .user-open-modal {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #dddddd;
+                border-radius: 21px;
+                height: 40px;
+                padding: 5px 5px 5px 12px;
+
+                > :first-child {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                > :last-child {
+                    width: 30px;
+                    height: 30px;
+                    margin-left: 12px;
+                }
+            }
+        }
+
         .contact-container {
             position: relative;
             display: flex;
@@ -115,9 +173,13 @@
 
     @media screen and (max-width: $narrow-breakpoint) {
 
-        .contact-container,
-        .logo {
-            display: none;
+        .main-header {
+
+            .logo,
+            .user-open-modal,
+            .user-section {
+                display: none;
+            }
         }
     }
 }

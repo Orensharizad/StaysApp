@@ -54,10 +54,9 @@ function StayPreview(props: Props) {
             </div>
             <div className='flex align-center space'>
                 <p className='address'>{stay.loc.address}</p>
-                <div className='flex align-center'>
+                <div className='stay-rate'>
                     <StarIcon width={14} height={14} />
                     <p className='rate'> {stay.statReviews.Value}</p>
-
                 </div>
             </div>
             <section className="stay-contant">

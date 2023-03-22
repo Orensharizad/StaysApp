@@ -10,7 +10,7 @@ import GoogleMapReact from 'google-map-react';
 const AnyReactComponent = ({ text }: any) => (
     <div className='map-marker'>
         <div className='circle'>
-            <MdHome />
+            <MdHome width={16} height={16} />
         </div>
     </div>
 )

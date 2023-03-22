@@ -25,11 +25,11 @@ function DetailsReviews({ stay }: props) {
                     <DetailsReviewPreview key={idx} review={review} />
                 )}
             </div>
-            <button onClick={() => setIsShowAll(prev => !prev)} className='btn-expand-reviews'>
+            {reviews.length > 6 && <button onClick={() => setIsShowAll(prev => !prev)} className='btn-expand-reviews'>
                 {isShowAll ? 'Show Less' : `Show More (${stay.reviews.length - reviews.length})`}
-            </button>
+            </button>}
 
-        </section>
+        </section >
         //         
     )
 }

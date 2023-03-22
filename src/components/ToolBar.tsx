@@ -1,12 +1,6 @@
-import { StayFilter } from '@/models/stay'
-import React, { useRef, useState } from 'react'
-
-
-type Props = {
-    setFilterBy: React.Dispatch<React.SetStateAction<StayFilter>>
-}
-
-function ToolBar(props: Props) {
+import { useState } from "react";
+import FilterModal from "./FilterModal";
+function ToolBar({ onSetFilter, filterBy, selected, setSelected }) {
     const imgs: { title: string, url: string }[] = [
         {
             title: 'Campers',
@@ -53,25 +47,34 @@ function ToolBar(props: Props) {
             url: 'https://res.cloudinary.com/dsvs2bgn4/image/upload/v1676817945/Cabins_gnbsvq.png'
         },
     ]
+    const [isOpenFilter, setIsOpenFilter] = useState(false)
 
-    const onSetFilter = (title: string) => {
-        props.setFilterBy(prev => ({ ...prev, type: title }))
+
+    const handleChangeType = (type: String) => {
+        onSetFilter('type', type)
+        setSelected(type)
     }
 
 
     return (
-        <section className='tool-bar'>
-            <div className="tool-bar-list">
-                {imgs.map((img) =>
-                    <div onClick={() => onSetFilter(img.title)} className='tool-bar-preview ' key={img.title}>
-                        <img src={img.url} alt="" />
-                        <p>{img.title}</p>
+        <>
+            <section className='tool-bar'>
+                <div className="tool-bar-list">
+                    {imgs.map((img) =>
+                        <div onClick={() => handleChangeType(img.title)} className={`tool-bar-preview ${img.title === selected && 'active'} `} key={img.title}>
+                            <img src={img.url} alt="" />
+                            <p>{img.title}</p>
+                        </div>
+                    )}
+                    <div onClick={() => setIsOpenFilter(prev => !prev)} className="more-filters">
+                        <img src="https://res.cloudinary.com/yaronshapira-com/image/upload/v1676833536/Airbnb/temp_dc7cvq.svg" alt="" />
+                        <p>Filters </p>
                     </div>
+                </div>
 
-                )}
-            </div>
-
-        </section>
+            </section>
+            {isOpenFilter && <FilterModal filterBy={filterBy} setIsOpenFilter={setIsOpenFilter} onSetFilter={onSetFilter} />}
+        </>
     )
 }
 

@@ -2,6 +2,10 @@
 import React from 'react'
 import { MagnifyingGlassIcon, GlobeAltIcon } from "@heroicons/react/24/solid"
 import { useRouter } from "next/navigation"
+import { RiGlobalLine } from 'react-icons/ri'
+import SearchModal from './SearchModal'
+const hamburgerBarsSrc = 'https://res.cloudinary.com/yaronshapira-com/image/upload/v1676822362/Airbnb/temp_1_au1jus.png'
+const userProfileSrc = 'https://res.cloudinary.com/yaronshapira-com/image/upload/v1676822576/Airbnb/temp_3_b1go8l.png'
 
 
 function AppHeader() {
@@ -9,6 +13,7 @@ function AppHeader() {
 
     return (
         <div className="full main-layout app-header">
+
             <header className="main-header ">
                 <div onClick={() => router.push('/')} className="logo ">
                     <img src="https://airbnb-in-react.netlify.app/static/media/mini-logo.1b5ae477397a3f99ffec204d164afd75.svg"
@@ -23,24 +28,25 @@ function AppHeader() {
                     <div className="flex gap-10 align-center">
                         <p className="item-add">Add guests</p>
                         <div className="search-icon">
-                            {/* <i className="fa-solid  fa-magnifying-glass"></i> */}
                             <MagnifyingGlassIcon />
                         </div>
                     </div>
 
                 </div>
 
-                <div className="sub-container  ">
-                    <p className="item">Airbnb your home</p>
-                    <div className="contact-container">
-                        {/* <i className="fa-solid fa-bars"></i> */}
-                        <GlobeAltIcon className='icon' />
-                        <img width="30px" height="30px
-                " src="https://res.cloudinary.com/dsvs2bgn4/image/upload/v1677080627/contact_aive51.svg" alt="" />
-                    </div>
+                <div className='user-section'>
+                    <button className='airbnb-cta'>Airbnb your home</button>
+                    <button className='language'>
+                        <RiGlobalLine fontSize={'19px'} />
+                    </button>
+                    <button className='user-open-modal'>
+                        <img src={hamburgerBarsSrc} alt='' />
+                        <img src={userProfileSrc} alt='' />
+                    </button>
                 </div>
 
             </header>
+            <SearchModal />
 
         </div >
     )

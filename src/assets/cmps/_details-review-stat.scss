@@ -1,27 +1,79 @@
 .details-review-stat {
+    // display: grid;
+    // grid-template-columns: repeat(2, 1fr);
+    // margin-bottom: 30px;
+
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin-bottom: 30px;
+    margin-bottom: 24px;
+    gap: 16px 0px;
 
 
 }
 
-.stat-item {
+// .stat-item {
+//     // display: flex;
+//     // align-items: center;
+//     // justify-content: space-between;
+//     // gap: 10px;
+//     // margin-right: 93px;
+//     // padding: 8px 0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     margin-right: 8%;
+//     padding-right: 8%;
+
+//     progress {
+//         font-size: 1em;
+//         height: 4px;
+//         border-radius: 40px;
+//         margin-inline-end: 6px;
+
+//         &::-webkit-progress-value {
+//             background: $clr1;
+//         }
+//     }
+// }
+.stay-review-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    margin-right: 93px;
-    padding: 8px 0;
+    margin-right: 8%;
+    padding-right: 8%;
 
-    progress {
-        font-size: 1em;
-        height: 4px;
-        border-radius: 40px;
-        margin-inline-end: 6px;
+    .bar-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        width: 50%;
 
-        &::-webkit-progress-value {
-            background: $clr1;
+        .bar {
+            position: relative;
+            height: 4px;
+            width: 100%;
+            margin-right: 4px;
+            background: rgb(221, 221, 221);
+            border-radius: 2px;
+
+            .bar-complete {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                bottom: 0px;
+                background: rgb(34, 34, 34);
+                border-radius: 2px;
+                width: 0%;
+            }
+        }
+
+        .rating {
+            font-family: 'Cereal-Med';
+            color: #222222;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 16px;
+            margin-left: 6px;
         }
     }
 }

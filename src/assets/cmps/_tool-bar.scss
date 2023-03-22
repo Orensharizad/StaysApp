@@ -6,6 +6,7 @@
         align-items: center;
         justify-content: space-between;
 
+
         .tool-bar-preview {
             display: flex;
             flex-direction: column;
@@ -31,7 +32,41 @@
                 border-bottom: 3px solid #ddd1d1;
             }
 
+            &.active {
+                opacity: 1;
+                color: #000;
+                border-bottom: 3px solid #ddd1d1;
+            }
+
 
         }
+    }
+
+    .more-filters {
+        display: flex;
+        gap: 10px;
+        font-size: 12px;
+        align-items: center;
+        border-radius: 12px;
+        padding: 0.9rem 1rem;
+        border: 1px solid #ddd;
+        font-family: 'Cereal-Med';
+        cursor: pointer;
+
+        img {
+            height: 14px;
+            width: 14px;
+        }
+
+    }
+
+
+}
+
+@media screen and (max-width: $narrow-breakpoint) {
+
+    .tool-bar {
+
+        display: none;
     }
 }

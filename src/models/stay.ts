@@ -63,6 +63,6 @@ export interface Host {
 
 export interface StayFilter {
     type: string
-    minPrice: string
-    maxPrice: string
+    minPrice: string | number
+    maxPrice: string | number
 }
