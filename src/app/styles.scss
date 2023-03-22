@@ -1,0 +1,35 @@
+@import "../assets/styles/setup/variables";
+@import "../assets/styles/setup/functions";
+@import "../assets/styles/setup/typography";
+@import "../assets/styles/setup/mixins";
+
+// // base
+@import "../assets/styles/basics/base";
+@import "../assets/styles/basics/helpers";
+@import "../assets/styles/basics/layout";
+
+//cmps
+
+@import "../assets/cmps/app-header";
+@import "../assets/cmps/stay-list";
+@import "../assets/cmps/stay-preview";
+@import "../assets/cmps/tool-bar";
+@import "../assets/cmps/loader";
+@import "../assets/cmps/details-loader";
+@import "../assets/cmps/guest-modal";
+@import "../assets/cmps/reserve-modal";
+
+
+//details
+@import "../assets/cmps/details-info";
+@import "../assets/cmps/details-reserve";
+@import "../assets/cmps/details-amenities";
+@import "../assets/cmps/details-review-stat";
+@import "../assets/cmps/details-review";
+@import "../assets/cmps/details-review-preview";
+
+
+
+
+//pages
+@import "../assets/pages/stay-details";

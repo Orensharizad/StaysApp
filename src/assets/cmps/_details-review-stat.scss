@@ -1,0 +1,27 @@
+.details-review-stat {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 30px;
+
+
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-right: 93px;
+    padding: 8px 0;
+
+    progress {
+        font-size: 1em;
+        height: 4px;
+        border-radius: 40px;
+        margin-inline-end: 6px;
+
+        &::-webkit-progress-value {
+            background: $clr1;
+        }
+    }
+}

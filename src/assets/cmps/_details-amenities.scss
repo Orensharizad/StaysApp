@@ -1,0 +1,18 @@
+.details-amenities {
+    padding: 32px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .amenities-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 1rem;
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+}

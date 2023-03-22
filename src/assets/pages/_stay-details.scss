@@ -1,0 +1,132 @@
+.stay-details {
+
+    color: $clr1;
+    font-size: 16px;
+
+
+
+    .stay-title {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+
+        :first-child {
+            font-size: 26px;
+        }
+    }
+
+    .imgs-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 50% 50%;
+        gap: 8px;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 48px;
+        max-height: 385px;
+
+        :first-child {
+            grid-row: 1/3;
+            grid-column: 1/3;
+        }
+
+        img {
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(0.7);
+            }
+        }
+
+    }
+
+    .details-content {
+        display: flex;
+        justify-content: space-between;
+
+
+        .main-content {
+            width: 60%;
+
+            .host-details {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                border-bottom: 1px solid #dddddd;
+                padding-bottom: 24px;
+                margin-bottom: 20px;
+
+                .host-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+
+                .host-name {
+                    font-size: 22px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                }
+
+                .host-img {
+                    width: 56px;
+                    height: 56px;
+                    border-radius: 50%
+                }
+
+            }
+
+
+        }
+
+        .air-cover {
+            border-bottom: 1px solid #dddddd;
+            padding: 32px 0;
+
+            .title {
+                font-size: 2rem;
+                padding-bottom: 5px;
+
+                span {
+                    color: $clr3;
+                }
+            }
+        }
+
+        .details-desc {
+            padding: 32px 0;
+            border-bottom: 1px solid #dddddd;
+        }
+    }
+
+    .reviews {
+        padding: 32px 0;
+        border-top: 1px solid #dddddd;
+    }
+
+    .sub-content {
+        width: 40%;
+        position: relative;
+
+    }
+
+    .maps {
+        margin-bottom: 20px;
+
+        .maps-title {
+            margin-bottom: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    }
+
+
+
+
+}

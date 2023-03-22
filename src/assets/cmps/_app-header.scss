@@ -1,0 +1,123 @@
+.app-header {
+    box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+    margin-bottom: 20px;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 10;
+
+    .main-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            cursor: pointer;
+
+
+            .logo-title {
+                font-size: 1.5rem;
+                color: $clr3;
+
+            }
+
+        }
+
+        .main-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #DDDDDD;
+            border-radius: 40px;
+            gap: 10px;
+            box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+            transition: box-shadow 0.2s ease;
+            cursor: pointer;
+            padding: 8px 16px;
+
+            &:hover {
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+
+            }
+
+            .search-icon {
+                width: 32px;
+                height: 32px;
+                background-color: $clr3;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                    color: #fff;
+                    width: 1.2rem;
+                    height: 1.2rem;
+                }
+
+            }
+
+            .item {
+                // color: $clr1;
+                // font-weight: 600;
+                font-family: 'Cereal-Med';
+            }
+
+            .item-add {
+                color: $clr2;
+            }
+
+        }
+
+        .sub-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+
+
+            .item {
+                padding: 1em;
+                border-radius: 2em;
+
+
+                &:hover {
+                    background-color: #f7f7f7;
+                }
+            }
+        }
+
+        .contact-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border-radius: 40px;
+            box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+            gap: 10px;
+            padding: 5px 5px 5px 12px;
+
+            svg {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+
+            &:hover {
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+
+            }
+
+        }
+    }
+
+    @media screen and (max-width: $narrow-breakpoint) {
+
+        .contact-container,
+        .logo {
+            display: none;
+        }
+    }
+}

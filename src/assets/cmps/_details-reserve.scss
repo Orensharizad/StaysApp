@@ -1,0 +1,163 @@
+.reserve-container {
+    position: sticky;
+    margin-left: 8.3333333333%;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 24px;
+    position: sticky;
+    top: 128px;
+    box-shadow: #0000001f 0 6px 16px;
+    max-width: 400px;
+    text-align: center;
+
+    >* {
+        margin-bottom: 20px;
+    }
+
+    .reserve-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .price {
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+
+            span {
+                font-size: 1rem;
+            }
+
+        }
+
+        .rate {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            font-weight: 600;
+
+            span {
+                color: $clr2;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .date-container {
+        display: grid;
+        // grid-template: 1fr 1fr/1fr 1fr;
+        grid-template-areas:
+            "chekein checkout"
+            "guest       guest"
+        ;
+        cursor: pointer;
+        border: 1px solid rgba(0, 0, 0, .32);
+        border-radius: 8px;
+        font-size: 14px;
+
+        >* {
+            padding: 12px;
+            cursor: pointer;
+        }
+
+        .check-in {
+            border-bottom: 1px solid rgba(0, 0, 0, .32);
+            display: flex;
+            flex-direction: column;
+            grid-area: chekein;
+            gap: 3px;
+
+
+            input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+        }
+
+
+        .check-out {
+            border-left: 1px solid rgba(0, 0, 0, .32);
+            border-bottom: 1px solid rgba(0, 0, 0, .32);
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            grid-area: checkout;
+        }
+
+        .guests {
+
+            grid-area: guest;
+            padding: 10px;
+            position: relative;
+
+            .guest-title {
+                font-size: 12px;
+                text-align: initial;
+                padding-bottom: 3px;
+
+            }
+
+
+            .guest-container {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+        }
+    }
+
+    .btn-reserve {
+        width: 100%;
+        color: #fff;
+        border: none;
+        background: radial-gradient(circle at left, #ff385c 0%, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100%);
+        border-radius: 10px;
+        font-weight: 600;
+        height: 50px;
+    }
+
+    .price-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, .32);
+        padding-bottom: 20px;
+
+        .price-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price-item {
+            text-decoration: underline;
+        }
+    }
+
+    .total {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+
+
+    .calendar {
+        position: absolute;
+        left: -190px;
+        top: 100px;
+    }
+
+    .form-title {
+        font-size: 12px;
+
+    }
+
+
+}
