@@ -16,4 +16,30 @@
     @include for-large-layout {
         grid-template-columns: repeat(4, 1fr);
     }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .btn-expand-reviews {
+        background-color: #fff;
+        border-radius: 8px;
+        transition: box-shadow .2s ease, transform .1s ease;
+        border: 1px solid #313131;
+        padding: 13px 10px;
+        color: #222;
+        font-weight: 600;
+        font-size: 1em;
+        cursor: pointer;
+        min-width: 190px;
+        max-width: 190px;
+        margin: 30px 0;
+
+        &:hover {
+            border-color: #000;
+            background: #F7F7F7;
+        }
+    }
+
+
 }

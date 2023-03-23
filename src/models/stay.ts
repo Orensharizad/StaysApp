@@ -66,13 +66,18 @@ export interface StayFilter {
     type: string
     minPrice: string | number
     maxPrice: string | number
+    searchBy?: SearchBy | undefined
 }
 
 export interface SearchBy {
-    destination: string
-    startDate: Date
-    endDate: Date
-    guests: number
+    destination?: string
+    startDate?: any
+    endDate?: any
+    guests?: number
 
+}
+
+export interface StayState {
+    stay: StayFilter
 }
 

@@ -1,4 +1,4 @@
-import { getStays } from '../../../lib/mongo/Stay'
+import { getStays, update } from '../../../lib/mongo/Stay'
 import { Stay } from '@/models/stay'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -11,6 +11,7 @@ export async function handler(
         const filterBy: any = req.query
         try {
             const stays = await getStays(filterBy)
+            // const temp = stays.forEach((stay: Stay) => update(stay))
             return res.status(200).json(stays)
         } catch (err) {
             return res.status(500)

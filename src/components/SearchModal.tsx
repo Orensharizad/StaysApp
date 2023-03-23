@@ -3,6 +3,12 @@ import React, { useState, useEffect } from 'react'
 import DateRangeModal from './DateRangeModal'
 import GuestModal from './GuestModal'
 import RegionModal from './RegionModal'
+import { setFilterBy } from "@/store/staySlice";
+
+
+import { useAppSelector, useAppDispatch } from '../hooks/stateHook'
+import { useRouter } from 'next/navigation'
+
 
 
 const emtpySearch = {
@@ -25,9 +31,7 @@ type Guest = {
 
 }
 
-type Selected = {
-    selected: string
-}
+
 
 function SearchModal({ isSearchOpen, setIsSearchOpen }: props) {
 
@@ -35,6 +39,9 @@ function SearchModal({ isSearchOpen, setIsSearchOpen }: props) {
     const [searchBy, setSearchBy] = useState<SearchBy>(emtpySearch)
     const [guests, setGuests] = useState<Guest[]>([])
     const [totalGuest, setTotalGuest] = useState(1)
+    const filterBy = useAppSelector((state) => state.stay.filterBy)
+    const dispatch = useAppDispatch()
+    const router = useRouter()
 
 
     function handleGuestsCounter(diff: number, idx: number) {
@@ -60,9 +67,25 @@ function SearchModal({ isSearchOpen, setIsSearchOpen }: props) {
         if (selected === 'searchLocation') setSelected('searchDatePickerIn')
         else if (selected === 'searchDatePickerIn') setSelected('searchDatePickerOut')
         else if (selected === 'searchDatePickerOut') setSelected('searchGuests')
-        // setSelected('searchGuests')
 
-        // console.log('selected:', selected)
+    }
+
+
+    function onSearch(ev: React.MouseEvent<HTMLElement>) {
+        ev.stopPropagation()
+        const filter = { ...filterBy }
+        const search = {
+            startDate: searchBy.startDate.toISOString(),
+            endDate: searchBy.endDate.toISOString(),
+            guests: searchBy.guests,
+            destination: searchBy.destination
+        }
+        filter.type = ''
+        filter.searchBy = search
+        dispatch(setFilterBy(filter))
+        setIsSearchOpen(false)
+        router.push('/')
+
     }
 
     useEffect(() => {
@@ -120,7 +143,7 @@ function SearchModal({ isSearchOpen, setIsSearchOpen }: props) {
                                 value={searchBy.startDate.toLocaleDateString()}
                                 readOnly
                             />
-                            {(selected === 'searchDatePickerIn' && isSearchOpen) && <DateRangeModal searchBy={searchBy} setSearchBy={setSearchBy} handleSelect={handleSelect} />}
+                            {((selected === 'searchDatePickerIn' || selected === 'searchDatePickerOut') && isSearchOpen) && <DateRangeModal searchBy={searchBy} setSearchBy={setSearchBy} handleSelect={handleSelect} />}
 
                         </label>
                         <label
@@ -134,7 +157,7 @@ function SearchModal({ isSearchOpen, setIsSearchOpen }: props) {
                                 value={searchBy.endDate.toLocaleDateString()}
                                 readOnly
                             />
-                            {(selected === 'searchDatePickerOut' && isSearchOpen) && <DateRangeModal searchBy={searchBy} setSearchBy={setSearchBy} handleSelect={handleSelect} />}
+
                         </label>
                         <label
                             className={`module-btn who ${selected === 'searchGuests' ? 'active' : ''}  `}
@@ -150,7 +173,7 @@ function SearchModal({ isSearchOpen, setIsSearchOpen }: props) {
                                 />
                                 {(selected === 'searchGuests' && isSearchOpen) && <GuestModal guests={guests} handleGuestsCounter={handleGuestsCounter} />}
                             </div>
-                            <button className='search-btn' >
+                            <button onClick={(ev) => onSearch(ev)} className='search-btn' >
                                 <img src='https://res.cloudinary.com/yaronshapira-com/image/upload/v1676904049/Airbnb/temp_vysd1h.svg' alt='' /> Search
                             </button>
                         </label>

@@ -2,7 +2,7 @@
 import AppFooter from '@/components/AppFooter'
 import AppHeader from '@/components/AppHeader'
 import './styles.scss'
-import store from '../store/store'
+import { store } from '../store/store'
 import { Provider } from 'react-redux'
 
 export const metadata = {

@@ -7,24 +7,27 @@ export const stayService = {
     getById,
     getEmtpyFilter,
     getLocations,
-    formatDateRange
+    formatDateRange,
+    generateRandomDateRange
 
 }
 
 async function query(filterBy: StayFilter) {
     const queryParams = `?type=${filterBy.type}&minPrice=${filterBy.minPrice}&maxPrice=${filterBy.maxPrice}`
     const stays: Stay[] = await httpService.get('stay' + queryParams)
-    stays.forEach(stay => stay.dates = _generateRandomDateRange())
     let filterdStays = [...stays]
 
     if (filterBy.type) {
-        filterdStays = filterdStays.filter(stay => stay.types.includes(filterBy.type))
+        filterdStays = filterdStays.filter((stay: Stay) => stay.types.includes(filterBy.type))
     }
     if (filterBy.minPrice > 0) {
         filterdStays = filterdStays.filter((stay: Stay) => stay.price > filterBy.minPrice)
     }
     if (filterBy.maxPrice) {
         filterdStays = filterdStays.filter((stay: Stay) => stay.price < filterBy.maxPrice)
+    }
+    if (filterBy.searchBy !== undefined) {
+        filterdStays = _filterSearch(filterdStays, filterBy)
     }
 
 
@@ -40,7 +43,7 @@ function getEmtpyFilter(): StayFilter {
     return { type: 'Campers', minPrice: 20, maxPrice: 1000 }
 }
 
-function _generateRandomDateRange(): Date[] {
+function generateRandomDateRange(): Date[] {
     const startDate = new Date()
     startDate.setDate(startDate.getDate() + Math.floor(Math.random() * 180)) // Add random number of days (up to 6 months) to current date
     const numDays = Math.floor(Math.random() * 7) + 2 // Generate a random number between 2 and 8
@@ -84,3 +87,32 @@ function formatDateRange(startDate: Date, endDate: Date) {
     return `${startMonth} ${startDate.getDate()} - ${endMonth} ${endDate.getDate()}`
 }
 
+
+function _filterSearch(stays: Stay[], filterBy: StayFilter) {
+    let filterdStays = [...stays]
+    filterdStays = filterdStays.filter((stay: Stay) => {
+        return getDayName(new Date(stay.dates[0])) === getDayName(new Date(filterBy.searchBy?.startDate))
+            && getDayName(new Date(stay.dates[1])) === getDayName(new Date(filterBy.searchBy?.endDate))
+            && getMonthName(new Date(new Date(stay.dates[0]))) === getMonthName(new Date(filterBy.searchBy?.startDate))
+            && getMonthName(new Date(new Date(stay.dates[1]))) === getMonthName(new Date(filterBy.searchBy?.endDate))
+    })
+    console.log('filterdStays: ', filterdStays);
+
+
+    return filterdStays
+}
+
+
+
+function getDayName(date: Date,) {
+    // date = new Date(date)
+    return date.toLocaleDateString("en-US", { weekday: 'long' })
+}
+
+function getMonthName(date: Date) {
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ]
+
+    return monthNames[date.getMonth()]
+}

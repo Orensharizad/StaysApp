@@ -11,14 +11,16 @@ type props = {
     handleSelect: () => void
 }
 
-function DateRangeModal({ setSearchBy, searchBy, handleSelect }: props) {
+function DateRangeModal({ setSearchBy, searchBy, handleSelect, }: props) {
     const selectionRange = {
         startDate: searchBy.startDate,
         endDate: searchBy.endDate,
         key: 'selection',
     }
     function handleSelectDate(ranges: any) {
+        console.log('ranges: ', ranges);
         setSearchBy({ ...searchBy, startDate: ranges.selection.startDate, endDate: ranges.selection.endDate })
+
         handleSelect()
     }
     return (

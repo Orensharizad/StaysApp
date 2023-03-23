@@ -1,4 +1,5 @@
-import { StayFilter } from "@/models/stay";
+import { Stay, StayFilter } from "@/models/stay";
+import { stayService } from "@/services/stay.service";
 import { ObjectId } from "mongodb";
 import { getCollection } from "./index";
 
@@ -33,6 +34,25 @@ export async function getById(stayId: any) {
         throw err
     }
 }
+
+
+export async function update(stay: Stay) {
+    try {
+        const stayToSave = {
+            ...stay, dates: stayService.generateRandomDateRange()
+        }
+        const collection = await getCollection('stay')
+        await collection.updateOne({ _id: new ObjectId(stay._id) }, { $set: stayToSave })
+        return stayToSave
+    } catch (err) {
+        console.error(`cannot update stay from service------------ `, err)
+        throw err
+    }
+}
+
+
+
+
 
 type criteria = {
     type?: Object

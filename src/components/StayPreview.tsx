@@ -32,7 +32,6 @@ function StayPreview({ stay }: Props) {
         selectedItem: imgIndex,
     }
 
-
     return (
         <article onMouseEnter={() => setISHover(true)} onMouseLeave={() => setISHover(false)} onClick={() => router.push(`details/${stay._id}`)} className='stay-preview'>
             <div className={'img-carousel '}>
@@ -44,10 +43,10 @@ function StayPreview({ stay }: Props) {
 
                 <Carousel {...carouselSettings}>
                     {stay.imgUrls.map((imgUrl, idx) =>
-                        <>
-                            <img src={imgUrl} className='stay-img' alt='' key={idx} />
+                        <div key={idx}>
+                            <img src={imgUrl} className='stay-img' alt='' />
                             <HeartIcon className='heart-icon' />
-                        </>
+                        </div>
                     )}
                 </Carousel>
                 {imgIndex < stay.imgUrls.length - 1 && (

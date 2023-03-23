@@ -1,8 +1,14 @@
+import { StayFilter } from '@/models/stay'
 import React from 'react'
 
 
 
-function FilterPrice({ onSetFilter, filterBy }) {
+type props = {
+    filterBy: StayFilter
+    onSetFilter: Function
+}
+
+function FilterPrice({ onSetFilter, filterBy }: props) {
 
 
     return (
