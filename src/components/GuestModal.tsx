@@ -12,7 +12,7 @@ type Guest = {
 type props = {
     guests: Guest[]
     handleGuestsCounter: (diff: number, idx: number) => void
-    guestRef: any
+    guestRef?: any
 
 }
 

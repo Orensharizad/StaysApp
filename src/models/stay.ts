@@ -16,6 +16,7 @@ export interface Stay {
     likedByUsers: any[]
     types: string[]
     statReviews: StatReviews
+    dates: Date[]
 }
 
 export interface StatReviews {
@@ -66,3 +67,12 @@ export interface StayFilter {
     minPrice: string | number
     maxPrice: string | number
 }
+
+export interface SearchBy {
+    destination: string
+    startDate: Date
+    endDate: Date
+    guests: number
+
+}
+

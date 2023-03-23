@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { MagnifyingGlassIcon, GlobeAltIcon } from "@heroicons/react/24/solid"
 import { useRouter } from "next/navigation"
 import { RiGlobalLine } from 'react-icons/ri'
@@ -10,11 +10,12 @@ const userProfileSrc = 'https://res.cloudinary.com/yaronshapira-com/image/upload
 
 function AppHeader() {
     const router = useRouter()
+    const [isSearchOpen, setIsSearchOpen] = useState(false)
 
     return (
-        <div className="full main-layout app-header">
+        <div className={`full main-layout app-header ${isSearchOpen && 'shown'}`}>
 
-            <header className="main-header ">
+            <header className={`main-header  `}>
                 <div onClick={() => router.push('/')} className="logo ">
                     <img src="https://airbnb-in-react.netlify.app/static/media/mini-logo.1b5ae477397a3f99ffec204d164afd75.svg"
                         alt='' />
@@ -22,7 +23,7 @@ function AppHeader() {
                 </div>
 
 
-                <div className="main-container">
+                {!isSearchOpen && <div onClick={() => setIsSearchOpen(prev => !prev)} className="main-container">
                     <p className="item">AnyWhere</p>|
                     <p className="item">Any Week</p>|
                     <div className="flex gap-10 align-center">
@@ -32,6 +33,11 @@ function AppHeader() {
                         </div>
                     </div>
 
+                </div>}
+                <div className={`experience-type ${isSearchOpen && 'shown'}`}>
+                    <button>Stays</button>
+                    <button>Experiences</button>
+                    <button>Online Experiences</button>
                 </div>
 
                 <div className='user-section'>
@@ -46,7 +52,9 @@ function AppHeader() {
                 </div>
 
             </header>
-            <SearchModal />
+
+            <SearchModal setIsSearchOpen={setIsSearchOpen} isSearchOpen={(isSearchOpen)} />
+
 
         </div >
     )

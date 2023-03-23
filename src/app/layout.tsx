@@ -1,3 +1,4 @@
+import AppFooter from '@/components/AppFooter'
 import AppHeader from '@/components/AppHeader'
 import './styles.scss'
 
@@ -15,11 +16,12 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body>
-        <main>
+        <main >
           <AppHeader />
           <div>
             {children}
           </div>
+          <AppFooter />
 
         </main>
       </body>

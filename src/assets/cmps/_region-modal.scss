@@ -1,0 +1,37 @@
+.region-modal {
+    background: #fff;
+    border-radius: 32px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .04), 0 8px 16px 0 rgba(0, 0, 0, .15);
+    padding: 50px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: auto;
+    width: auto;
+
+    .modal-title {
+        font-size: 14px;
+        font-family: 'Cereal-Bold', sans-serif;
+        margin-bottom: 28px;
+    }
+
+
+    .region-list {
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem 1rem;
+
+        img {
+
+            width: 122px;
+            height: 122px;
+            border: 1px solid rgb(221, 221, 221);
+            border-radius: 10px;
+            cursor: pointer;
+            transition-property: -ms-transform, -webkit-transform, transform, background-color, border-color !important;
+            transition-duration: 0.15s !important;
+            transition-timing-function: ease-in-out !important;
+        }
+    }
+}

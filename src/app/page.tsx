@@ -11,7 +11,7 @@ import { stayService } from "../services/stay.service";
 export default function HomePage() {
   const [stays, setStays] = useState<Stay[]>([])
   const [filterBy, setFilterBy] = useState(stayService.getEmtpyFilter())
-  const [selected, setSelected] = useState(filterBy.type)
+  const [selected, setSelected] = useState<string>(filterBy.type)
 
 
 
@@ -31,13 +31,15 @@ export default function HomePage() {
     }
   }
 
-  const onSetFilter = (filed: any, val: any) => {
+  const onSetFilter = (filed: string, val: string | number) => {
     setStays([])
     setFilterBy(prev => ({ ...prev, [filed]: val }))
   }
 
+
+
   return (
-    <main className="main-layout" >
+    <main className="main-layout "  >
       <ToolBar selected={selected} setSelected={setSelected} filterBy={filterBy} onSetFilter={onSetFilter} />
       <StayList stays={stays} />
     </main>

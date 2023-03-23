@@ -16,6 +16,32 @@
         }
     }
 
+    .btns {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+
+        @media screen and (max-width: 750px) {
+            align-self: flex-end;
+        }
+
+        button {
+            svg {
+                min-width: 16px;
+            }
+
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: transparent;
+            border: none;
+
+            p {
+                text-decoration: underline;
+            }
+        }
+    }
+
     .imgs-container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);

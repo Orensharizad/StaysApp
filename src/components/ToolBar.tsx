@@ -1,6 +1,17 @@
+import { StayFilter } from "@/models/stay";
 import { useState } from "react";
 import FilterModal from "./FilterModal";
-function ToolBar({ onSetFilter, filterBy, selected, setSelected }) {
+
+type props = {
+    onSetFilter: Function
+    filterBy: StayFilter
+    selected: string
+    setSelected: React.Dispatch<React.SetStateAction<string>>
+
+}
+
+
+function ToolBar({ onSetFilter, filterBy, selected, setSelected }: props) {
     const imgs: { title: string, url: string }[] = [
         {
             title: 'Campers',
@@ -50,7 +61,9 @@ function ToolBar({ onSetFilter, filterBy, selected, setSelected }) {
     const [isOpenFilter, setIsOpenFilter] = useState(false)
 
 
-    const handleChangeType = (type: String) => {
+    const handleChangeType = (type: string) => {
+        console.log('type: ', type);
+
         onSetFilter('type', type)
         setSelected(type)
     }
@@ -60,8 +73,8 @@ function ToolBar({ onSetFilter, filterBy, selected, setSelected }) {
         <>
             <section className='tool-bar'>
                 <div className="tool-bar-list">
-                    {imgs.map((img) =>
-                        <div onClick={() => handleChangeType(img.title)} className={`tool-bar-preview ${img.title === selected && 'active'} `} key={img.title}>
+                    {imgs.map((img, i) =>
+                        <div onClick={() => handleChangeType(img.title)} className={`tool-bar-preview ${img.title === selected && 'active'} `} key={i}>
                             <img src={img.url} alt="" />
                             <p>{img.title}</p>
                         </div>

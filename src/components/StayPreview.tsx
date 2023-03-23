@@ -1,5 +1,6 @@
 import { Stay } from '@/models/stay'
 import { StarIcon } from "@heroicons/react/24/solid"
+import { HeartIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation"
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -8,12 +9,14 @@ import { BiChevronLeft, BiChevronRight } from 'react-icons/bi'
 
 
 import React, { useState } from 'react'
+import { stayService } from '@/services/stay.service';
 type Props = {
     stay: Stay
 }
-function StayPreview(props: Props) {
+function StayPreview({ stay }: Props) {
     const [imgIndex, setImgIndex] = useState<number>(0)
     const [isHover, setISHover] = useState(false)
+    const router = useRouter()
 
 
     function onNextImage(ev: React.MouseEvent<HTMLButtonElement, MouseEvent>, inc: number) {
@@ -29,8 +32,6 @@ function StayPreview(props: Props) {
         selectedItem: imgIndex,
     }
 
-    const { stay } = props
-    const router = useRouter()
 
     return (
         <article onMouseEnter={() => setISHover(true)} onMouseLeave={() => setISHover(false)} onClick={() => router.push(`details/${stay._id}`)} className='stay-preview'>
@@ -42,9 +43,12 @@ function StayPreview(props: Props) {
                 )}
 
                 <Carousel {...carouselSettings}>
-                    {stay.imgUrls.map((imgUrl, idx) => {
-                        return <img src={imgUrl} className='stay-img' alt='' key={idx} />
-                    })}
+                    {stay.imgUrls.map((imgUrl, idx) =>
+                        <>
+                            <img src={imgUrl} className='stay-img' alt='' key={idx} />
+                            <HeartIcon className='heart-icon' />
+                        </>
+                    )}
                 </Carousel>
                 {imgIndex < stay.imgUrls.length - 1 && (
                     <button className={`carousel-btn right ${isHover && 'hover'} `} onClick={ev => onNextImage(ev, 1)}>
@@ -62,7 +66,8 @@ function StayPreview(props: Props) {
             <section className="stay-contant">
                 <p>{stay.roomType}</p>
                 <main>
-                    <p className="date">Mar 11-15</p>
+                    <p className="date">{stayService.formatDateRange(new Date(stay.dates[0]), new Date(stay.dates[1]))}</p>
+
                 </main>
                 <p><span className='price'>{stay.price}$</span> night</p>
             </section>

@@ -109,5 +109,22 @@
         gap: 2px;
     }
 
+    .heart-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: block;
+        fill: rgba(0, 0, 0, 0.5);
+        height: 36px;
+        width: 35px;
+        stroke: #fff;
+        stroke-width: 1px;
+        overflow: visible;
+
+        &:hover {
+            scale: 1.05;
+        }
+    }
+
 
 }

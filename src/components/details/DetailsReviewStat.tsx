@@ -14,7 +14,7 @@ function DetailsReviewStat({ stay }: props) {
         <section className="details-review-stat">
             {Object.entries(stay.statReviews).map(([key, val], i) => (
 
-                <div className='stay-review-bar'>
+                <div key={i} className='stay-review-bar'>
                     <p>{key}</p>
                     <div className='bar-wrapper'>
                         <div className='bar'>

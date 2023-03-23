@@ -10,6 +10,9 @@ import ReserveModal from '@/components/ReserveModal'
 import { Stay } from '@/models/stay'
 import { stayService } from '@/services/stay.service'
 import React, { useEffect, useState } from 'react'
+import { AiOutlineHeart } from 'react-icons/ai'
+import { FiShare } from 'react-icons/fi'
+
 
 function StayDetails({ params: { id } }: any) {
 
@@ -34,11 +37,23 @@ function StayDetails({ params: { id } }: any) {
   if (!stay) return <div></div>
   return (
     <section className='stay-details main-layout'>
-      <div className="stay-title">
-        <h3> {stay.name}</h3>
-        <p>{stay.loc.address}</p>
-      </div>
+      <div className='flex align-center space'>
+        <div className="stay-title">
+          <h3> {stay.name}</h3>
+          <p>{stay.loc.address}</p>
+        </div>
+        <div className='btns'>
+          <button>
+            <FiShare />
+            <p>Share</p>
+          </button>
+          <button>
+            <AiOutlineHeart />
+            <p>Save</p>
+          </button>
+        </div>
 
+      </div>
       <div className="imgs-container">
         {stay.imgUrls.map((img, idx) =>
           <img key={idx} src={img} alt="" />
