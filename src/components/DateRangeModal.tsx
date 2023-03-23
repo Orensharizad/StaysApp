@@ -8,9 +8,10 @@ import 'react-date-range/dist/theme/default.css' // theme css file
 type props = {
     searchBy: SearchBy
     setSearchBy: React.Dispatch<React.SetStateAction<SearchBy>>
+    handleSelect: () => void
 }
 
-function DateRangeModal({ setSearchBy, searchBy }: props) {
+function DateRangeModal({ setSearchBy, searchBy, handleSelect }: props) {
     const selectionRange = {
         startDate: searchBy.startDate,
         endDate: searchBy.endDate,
@@ -18,7 +19,7 @@ function DateRangeModal({ setSearchBy, searchBy }: props) {
     }
     function handleSelectDate(ranges: any) {
         setSearchBy({ ...searchBy, startDate: ranges.selection.startDate, endDate: ranges.selection.endDate })
-        // handleSelect()
+        handleSelect()
     }
     return (
         <section className='date-modal'>

@@ -4,7 +4,6 @@
     border: 1px solid rgb(221, 221, 221);
     border-radius: 12px;
     padding: 24px;
-    position: sticky;
     top: 128px;
     box-shadow: #0000001f 0 6px 16px;
     max-width: 400px;
@@ -160,4 +159,12 @@
     }
 
 
+}
+
+@media (max-width:750px) {
+    .reserve-container {
+        display: none;
+
+
+    }
 }

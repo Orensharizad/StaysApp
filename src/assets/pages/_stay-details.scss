@@ -12,7 +12,7 @@
         margin-bottom: 20px;
 
         :first-child {
-            font-size: 26px;
+            font-size: 1rem;
         }
     }
 
@@ -21,9 +21,7 @@
         gap: 0.5rem;
         align-items: center;
 
-        @media screen and (max-width: 750px) {
-            align-self: flex-end;
-        }
+
 
         button {
             svg {
@@ -72,6 +70,8 @@
     .details-content {
         display: flex;
         justify-content: space-between;
+
+
 
 
         .main-content {
@@ -153,6 +153,16 @@
     }
 
 
+    @media screen and (max-width: $narrow-breakpoint) {
+        .details-content {
+            display: block;
+
+            .main-content {
+                width: 100%;
+            }
+        }
+
+    }
 
 
 }

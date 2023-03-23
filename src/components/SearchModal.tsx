@@ -56,14 +56,14 @@ function SearchModal({ isSearchOpen, setIsSearchOpen }: props) {
         else return `${totalGuest} guests`
     }
 
-    // function handleSelect() {
-    //     // if (selected === 'searchLocation') setSelected('searchDatePickerIn')
-    //     // else if (selected === 'searchDatePickerIn') setSelected('searchDatePickerOut')
-    //     // else if (selected === 'searchDatePickerOut') setSelected('searchGuests')
-    //     setSelected('searchGuests')
+    function handleSelect() {
+        if (selected === 'searchLocation') setSelected('searchDatePickerIn')
+        else if (selected === 'searchDatePickerIn') setSelected('searchDatePickerOut')
+        else if (selected === 'searchDatePickerOut') setSelected('searchGuests')
+        // setSelected('searchGuests')
 
-    //     // console.log('selected:', selected)
-    // }
+        // console.log('selected:', selected)
+    }
 
     useEffect(() => {
         const initialGuests: Guest[] = [
@@ -106,7 +106,7 @@ function SearchModal({ isSearchOpen, setIsSearchOpen }: props) {
                         >
                             <p className='header'>Where</p>
                             <input type='text' placeholder='Search destinations' value={searchBy.destination} readOnly />
-                            {(selected === 'searchLocation' && isSearchOpen) && <RegionModal setSearchBy={setSearchBy} setSelected={setSelected} />}
+                            {(selected === 'searchLocation' && isSearchOpen) && <RegionModal setSearchBy={setSearchBy} setSelected={setSelected} handleSelect={handleSelect} />}
 
                         </label>
                         <label
@@ -120,7 +120,7 @@ function SearchModal({ isSearchOpen, setIsSearchOpen }: props) {
                                 value={searchBy.startDate.toLocaleDateString()}
                                 readOnly
                             />
-                            {(selected === 'searchDatePickerIn' && isSearchOpen) && <DateRangeModal searchBy={searchBy} setSearchBy={setSearchBy} />}
+                            {(selected === 'searchDatePickerIn' && isSearchOpen) && <DateRangeModal searchBy={searchBy} setSearchBy={setSearchBy} handleSelect={handleSelect} />}
 
                         </label>
                         <label
@@ -134,7 +134,7 @@ function SearchModal({ isSearchOpen, setIsSearchOpen }: props) {
                                 value={searchBy.endDate.toLocaleDateString()}
                                 readOnly
                             />
-                            {(selected === 'searchDatePickerOut' && isSearchOpen) && <DateRangeModal searchBy={searchBy} setSearchBy={setSearchBy} />}
+                            {(selected === 'searchDatePickerOut' && isSearchOpen) && <DateRangeModal searchBy={searchBy} setSearchBy={setSearchBy} handleSelect={handleSelect} />}
                         </label>
                         <label
                             className={`module-btn who ${selected === 'searchGuests' ? 'active' : ''}  `}

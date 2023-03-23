@@ -1,6 +1,9 @@
+'use client'
 import AppFooter from '@/components/AppFooter'
 import AppHeader from '@/components/AppHeader'
 import './styles.scss'
+import store from '../store/store'
+import { Provider } from 'react-redux'
 
 export const metadata = {
   title: 'Create Next App',
@@ -16,14 +19,16 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body>
-        <main >
-          <AppHeader />
-          <div>
-            {children}
-          </div>
-          <AppFooter />
+        <Provider store={store}>
+          <main >
+            <AppHeader />
+            <div>
+              {children}
+            </div>
+            <AppFooter />
+          </main>
+        </Provider>
 
-        </main>
       </body>
     </html>
   )

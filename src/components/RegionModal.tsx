@@ -5,15 +5,17 @@ import React from 'react'
 type props = {
     setSelected: React.Dispatch<React.SetStateAction<string>>
     setSearchBy: React.Dispatch<React.SetStateAction<SearchBy>>
+    handleSelect: () => void
 
 }
 
-function RegionModal({ setSelected, setSearchBy }: props) {
+function RegionModal({ setSelected, setSearchBy, handleSelect }: props) {
 
     const regions = stayService.getLocations()
 
     function onSelectRegion(title: string) {
         setSearchBy(prev => ({ ...prev, destination: title }))
+        handleSelect()
     }
 
     return (
